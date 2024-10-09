@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width= device-width, initial-scale=1.0">
+    <!--웹에 대한 정보 제공-->
+    <meta name="description" content="SOPT 35th week1 Assignment">
+    <meta name="author" content="공준혁">
+    <!--SEO-->
+    <meta name="keywords" content="HTML, CSS, Web Development, Sopt">
+    <meta name="robots" content="index, follow">
+    <!--SNS 공유시 사용되는(표시되는) 내용들-->
+    <meta property="og:title" content="준혁 - SOPT 35 week1">
+    <meta property="og:description" content="SOPT 35기 웹파트 OB 공준혁의 1주차 과제 페이지입니다.">
+    <meta property="og:image" content="NONE">
+    <meta property="og:url" content="NONE">
+    <!--스타일링을 위한 아이콘 연결과 css 파일 연결-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <title>SOPT 35th 공준혁(1Week)</title>
+  </head>
+
+
+  <body>
+    <!--header 부분-->
+    <header>
+      <a href="/" class="homeLogo" style="display:flex; justify-content: center; align-items: center; width: 15vw;">
+        <img src="./images/soptLogo.png" style="display: block; width: 63px; height: 21px;"></img>
+      </a>
+      <nav>
+        <ul style="list-style: none; display: flex; justify-content: flex-start; align-items: center; gap: 2rem; width: 75vw; padding-left: 3rem;">
+          <li class="navLi"><a href="#">멤버</a></li>
+          <li class="navLi"><a href="#">프로젝트</a></li>
+          <li class="navLi"><a href="#">모임</a></li>
+          <li class="navLi"><a href="#">취미</a></li>
+        </ul>
+      </nav>
+      <div style="width: 10vw; display: flex; justify-content: center; align-items: center;">
+        <div style="display: flex; gap: 2rem;"  >
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <i class="fa-solid fa-user"></i>
+        </div>
+      </div>      
+    </header>
+
+    <!--main 부분-->
+    <main>
+      <section class="big-banner" style="width: 100vw; height: 100vh;">
+        <article class="big-banner-item" style="width: 100%; height: 100%; background-image: url(./images/banner.webp); background-size: cover; background-repeat: no-repeat; background-position: center;">
+          <div style="position: absolute; right: 5vw; bottom: 10vh; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 1rem; color: aliceblue;">
+            <div style="font-size: 1.5rem; font-weight: 700;">10/25 GD 컴백</div>
+            <button class="big-banner-item-button"><a href="https://www.instagram.com/xxxibgdrgn/?hl=ko" target="_blank" style="width: 100%;height: 100%; display: flex; justify-content: center; align-items: center;">GD 인스타 바로가기</a></button>
+          </div>
+        </article>
+      </section>
+      <section class="infinite-banner">
+        <article class="infinite-banner-front">
+          <div class="infinite-banner-item" style="background-image: url(./images/cantHelp.webp);"></div>
+          <div class="infinite-banner-item" style="background-image: url(./images/coupdeta.webp);"></div>
+          <div class="infinite-banner-item" style="background-image: url(./images/oneOfKind.png);"></div>
+          <div class="infinite-banner-item" style="background-image: url(./images/heartBreaker.webp);"></div>
+        </article>
+        <article class="infinite-banner-back">
+          <div class="infinite-banner-item" style="background-image: url(./images/cantHelp.webp);"></div>
+          <div class="infinite-banner-item" style="background-image: url(./images/coupdeta.webp);"></div>
+          <div class="infinite-banner-item" style="background-image: url(./images/oneOfKind.png);"></div>
+          <div class="infinite-banner-item" style="background-image: url(./images/heartBreaker.webp);"></div>
+        </article>
+      </section>
+      <section style="position: relative;">
+        <div style="position: absolute; left: -1rem; top: 0; width: 6vw; height: 25vw; background-color: rgba(154, 205, 50, 0.2);">
+          <a href="#left" style="display: flex; width: 100%; height: 100%; justify-content: center; align-items: center;">
+            <i class="fa-solid fa-chevron-left" style="color: black; font-size: 3rem;"></i>
+          </a>
+        </div>
+        <article class="scroll-banner">
+          <a id="left" ></a>
+          <div class="scroll-banner-item" style="background-image: url(./images/1.jpg);"></div>
+          <div class="scroll-banner-item" style="background-image: url(./images/2.jpg);"></div>
+          <div class="scroll-banner-item" style="background-image: url(./images/3.jpg);"></div>
+          <div class="scroll-banner-item" style="background-image: url(./images/4.jpg);"></div>
+          <div class="scroll-banner-item" style="background-image: url(./images/5.jpg);"></div>
+          <div class="scroll-banner-item" style="background-image: url(./images/6.jpeg);"></div>
+          <div class="scroll-banner-item" style="background-image: url(./images/7.jpg);"></div>
+          <div class="scroll-banner-item" style="background-image: url(./images/8.jpg);"></div>
+          <div class="scroll-banner-item" style="background-image: url(./images/9.jpg);"></div>
+          <div class="scroll-banner-item" style="background-image: url(./images/10.webp);"></div>
+          <div class="scroll-banner-item" style="background-image: url(./images/11.jpg);"></div>
+          <div class="scroll-banner-item" style="background-image: url(./images/12.jpg);"></div>
+          <a id="right"></a>
+        </article>
+        <div style="position: absolute; right: -1rem; top: 0; width: 6vw; height: 25vw; background-color: rgba(154, 205, 50, 0.1);">
+          <a href="#right" style="display: flex; width: 100%; height: 100%; justify-content: center; align-items: center;">
+            <i class="fa-solid fa-chevron-right" style="color: black; font-size: 3rem; "></i>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <!--footer 부분-->
+    <footer>
+      푸터 영역 
+    </footer>
+    
+  </body>
+
+
+  <script src="https://kit.fontawesome.com/0c69fdf2c0.js" crossorigin="anonymous"></script>
+
+</html>
+
