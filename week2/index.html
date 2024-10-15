@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SOPT week2 공준혁</title>
-  <link rel="stylesheey" href="style.css">
+  <link rel="stylesheet" href="style.css">
   <script defer src="script.js"></script>
 </head>
 <body>
-    <header>
+    <header >
       <div>Icon (will be changed)</div>
       <div>title</div>
       <div>~long Text~</div>
@@ -16,28 +16,28 @@
 
     <main>
       <section id="filter-section">
-        <article class="row1">
+        <article class="row">
           <div class="filter-box">
             <div class="filter-name">이름</div>
-            <input id="ko-name-filter">
+            <input id="ko-name-filter" placeholder="이름을 입력하세요">
           </div>
         </article>
 
-        <article class="row2">
+        <article class="row">
           <div class="filter-box">
             <div class="filter-name">영문이름</div>
-            <input id="en-name-filter">
+            <input id="en-name-filter" placeholder="영문이름을 입력하세요">
           </div>
         </article>
 
-        <article class="row3">
+        <article class="row">
           <div class="filter-box">
             <div class="filter-name">Github</div>
-            <input id="github-filter">
+            <input id="github-filter" placeholder="Github ID 입력하세요">
           </div>
           <div class="filter-box">
             <div class="filter-name">성별</div>
-            <select id="sext-filter">
+            <select id="sex-filter">
               <option value="">성별 선택</option>
               <option value="male">남성</option>
               <option value="female">여성</option>
@@ -53,15 +53,15 @@
           </div>
         </article>
 
-        <article class="row4">
+        <article class="row">
           <div class="filter-box">
             <div class="filter-name">1주차 금잔디조</div>
-            <input id="week1-group">
+            <input id="week1-group" placeholder="1주차 금잔디조를 입력하세요(1~9)">
           </div>
 
           <div class="filter-box">
             <div class="filter-name">2주차 금잔디조</div>
-            <input id="week2-group">
+            <input id="week2-group" placeholder="2주차 금잔디조를 입력하세요(1~9)">
           </div>
         </article>
         
@@ -79,18 +79,32 @@
 
         <article id="table">
           <div id="thead">
-            <input type="checkbox" id="select-all">
-            <div>이름</div>
-            <div>영문이름</div>
-            <div>Github</div>
-            <div>성별</div>
-            <div>역할</div>
-            <div>1주차 금잔디</div>
-            <div>2주차 금잔디</div>
+            <div class="checkbox"><input type="checkbox" id="select-all"></div>
+            <div class="user-ko-name">이름</div>
+            <div class="user-en-name">영문이름</div>
+            <div class="user-github">Github</div>
+            <div class="user-sex">성별</div>
+            <div class="user-position">역할</div>
+            <div class="user-1week">1주차 금잔디</div>
+            <div class="user-2week">2주차 금잔디</div>
           </div>
 
           <div id="tbody">
             <!--여기에 내용들 렌더링 될 예정-->
+            <!--다음은 예시(tbody-row 단위로 렌더링하면 됨)-->
+            <div class="tbody-row">
+              <div class="checkbox"><input type="checkbox"></div>
+              <div class="user-ko-name">공준혁</div>
+              <div class="user-en-name">Kong Jun Hyuk</div>
+              <div class="user-github"> ocahs9</div>
+              <div class="user-sex">남자</div>
+              <div class="user-position">OB</div>
+              <div class="user-1week">5</div>
+              <div class="user-2week">7</div>
+            </div>
+            
+            
+
           </div>
         </article>
       </section>
