@@ -8,7 +8,99 @@
   <script defer src="script.js"></script>
 </head>
 <body>
-  
+    <header>
+      <div>Icon (will be changed)</div>
+      <div>title</div>
+      <div>~long Text~</div>
+    </header>
+
+    <main>
+      <section id="filter-section">
+        <article class="row1">
+          <div class="filter-box">
+            <div class="filter-name">이름</div>
+            <input id="ko-name-filter">
+          </div>
+        </article>
+
+        <article class="row2">
+          <div class="filter-box">
+            <div class="filter-name">영문이름</div>
+            <input id="en-name-filter">
+          </div>
+        </article>
+
+        <article class="row3">
+          <div class="filter-box">
+            <div class="filter-name">Github</div>
+            <input id="github-filter">
+          </div>
+          <div class="filter-box">
+            <div class="filter-name">성별</div>
+            <select id="sext-filter">
+              <option value="">성별 선택</option>
+              <option value="male">남성</option>
+              <option value="female">여성</option>
+            </select>
+          </div>
+          <div class="filter-box">
+            <div class="filter-name">역할</div>
+            <select id="position-filter">
+              <option value="">역할 선택</option>
+              <option value="yb">YB</option>
+              <option value="ob">OB</option>
+            </select>
+          </div>
+        </article>
+
+        <article class="row4">
+          <div class="filter-box">
+            <div class="filter-name">1주차 금잔디조</div>
+            <input id="week1-group">
+          </div>
+
+          <div class="filter-box">
+            <div class="filter-name">2주차 금잔디조</div>
+            <input id="week2-group">
+          </div>
+        </article>
+        
+        <div class="button-wrapper">
+          <button id="reset-button">초기화</button>
+          <button id="search-button">검색</button>
+        </div>
+      </section>
+
+      <section id="table-section">
+        <div class="button-wrapper">
+          <button id="delete-button">선택 삭제</button>
+          <button id="add-button">추가</button>
+        </div>
+
+        <article id="table">
+          <div id="thead">
+            <input type="checkbox" id="select-all">
+            <div>이름</div>
+            <div>영문이름</div>
+            <div>Github</div>
+            <div>성별</div>
+            <div>역할</div>
+            <div>1주차 금잔디</div>
+            <div>2주차 금잔디</div>
+          </div>
+
+          <div id="tbody">
+            <!--여기에 내용들 렌더링 될 예정-->
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <div id="modal">
+      <div id="modal-content">
+
+      </div>
+    </div>
 
 </body>
 </html>
