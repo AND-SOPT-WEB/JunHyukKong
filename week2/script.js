@@ -4,6 +4,29 @@ if(!localStorage.getItem('data')){
   localStorage.setItem('data', JSON.stringify(members));
 }
 
+const setupCheckboxListener = () => {
+  //전체 체크 기능
+  const allCheckbox = document.getElementById('select-all');
+  allCheckbox.addEventListener('change', (e)=> {
+    const isChecked = e.target.checked;
+    const otherCheckboxes = document.querySelectorAll(".row-checkbox");
+    
+    otherCheckboxes.forEach((checkBox) => {
+      checkBox.checked = isChecked;
+    })
+  })
+
+  //개별 체크 -> 전체 체크 반영하는 기능
+  const otherCheckboxes = document.querySelectorAll(".row-checkbox");
+  otherCheckboxes.forEach((checkBox) => {
+    checkBox.addEventListener('change', ()=>{
+      //querySelectAll은 NodeList를 반환, NodeList는 forEach 메서드는 지원하지만 every 메서드는 지원 x
+      const isAllCheck = Array.from(otherCheckboxes).every(checkBox=> checkBox.checked);
+      allCheckbox.checked = isAllCheck;
+    });
+  })
+}
+
 const renderTable = () => {
   const dataArr = JSON.parse(localStorage.getItem('data'));
 
@@ -26,28 +49,12 @@ const renderTable = () => {
 
     tbody.appendChild(tbodyRow);
   })
+
+  setupCheckboxListener();
 }
 
-//전체 체크 기능
-const allCheckbox = document.getElementById('select-all');
-allCheckbox.addEventListener('change', (e)=> {
-  const isChecked = e.target.checked;
-  const otherCheckboxes = document.querySelectorAll(".row-checkbox");
-  
-  otherCheckboxes.forEach((checkBox) => {
-    checkBox.checked = isChecked;
-  })
-})
 
-//역으로, 만약 하나라도 체크 해제가 되면 전체 체크에도 반영이 되도록
-//모든 checkbox를 매번 확인 -> 전부 체크되어있거나, 아니거나로 판단하도록 변경
-const otherCheckboxes = document.querySelectorAll(".row-checkbox");
-otherCheckboxes.forEach((checkBox) => {
-  checkBox.addEventListener('change', ()=>{
-    console.log("메롱");
-    const isAllCheck = otherCheckboxes.every(checkBox=> checkBox.checked);
-    allCheckbox.checked = isAllCheck;
-  });
-})
+
+
 
 renderTable();
