@@ -40,12 +40,13 @@ allCheckbox.addEventListener('change', (e)=> {
 })
 
 //역으로, 만약 하나라도 체크 해제가 되면 전체 체크에도 반영이 되도록
+//모든 checkbox를 매번 확인 -> 전부 체크되어있거나, 아니거나로 판단하도록 변경
 const otherCheckboxes = document.querySelectorAll(".row-checkbox");
 otherCheckboxes.forEach((checkBox) => {
-  checkBox.addEventListener('change', (e)=>{
-    if(!e.target.checked){
-      allCheckbox.checked = false;
-    }
+  checkBox.addEventListener('change', ()=>{
+    console.log("메롱");
+    const isAllCheck = otherCheckboxes.every(checkBox=> checkBox.checked);
+    allCheckbox.checked = isAllCheck;
   });
 })
 
