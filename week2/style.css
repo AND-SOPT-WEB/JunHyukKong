@@ -225,4 +225,32 @@ section#table-section{
 
 
 
+#modal{
+	position: fixed;
+	top: 0;
+
+	background-color: rgba(0,0,0,0.7);
+	width: 100vw;
+	height: 100vh;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	display: none;
+}
+
+#modal-content{
+	width: 70vw;
+	height: 80vh;
+	background-color: azure;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	gap: 1rem;
+}
+
 

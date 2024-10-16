@@ -56,12 +56,12 @@
         <article class="row">
           <div class="filter-box">
             <div class="filter-name">1주차 금잔디조</div>
-            <input id="week1-group" placeholder="1주차 금잔디조를 입력하세요(1~9)">
+            <input id="week1-group" type="number" placeholder="1주차 금잔디조를 입력하세요(1~9)">
           </div>
 
           <div class="filter-box">
             <div class="filter-name">2주차 금잔디조</div>
-            <input id="week2-group" placeholder="2주차 금잔디조를 입력하세요(1~9)">
+            <input id="week2-group" type="number" placeholder="2주차 금잔디조를 입력하세요(1~9)">
           </div>
         </article>
         
@@ -112,7 +112,35 @@
 
     <div id="modal">
       <div id="modal-content">
+        <h1>새 멤버 추가</h1>
+        <h2>이름</h2>
+        <input type="text" id="add-ko-name" placeholder="이름을 입력하세요">
+        
+        <h2>영문 이름</h2>
+        <input type="text" id="add-en-name" placeholder="영문 이름을 입력하세요">
 
+        <h2>Github ID</h2>
+        <input type="text" id="add-github" placeholder="깃허브 id를 입력하세요">
+
+        <h2>성별</h2>
+        <select id="add-sex">
+          <option value="">성별 선택</option>
+          <option value="male">남성</option>
+          <option value="female">여성</option>
+        </select>
+
+        <h2>역할</h2>
+        <select id="add-position">
+          <option value="">역할 선택</option>
+          <option value="yb">YB</option>
+          <option value="ob">OB</option>
+        </select>
+
+        <h2>1주차 금잔디조</h2>
+        <input type="number" id="add-en-name" placeholder="1주차 금잔디조를 입력하세요(1~9)">
+
+        <h2>2주차 금잔디조</h2>
+        <input type="number" id="add-en-name" placeholder="2주차 금잔디조를 입력하세요(1~9)">
       </div>
     </div>
 
