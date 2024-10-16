@@ -28,6 +28,7 @@ const renderTable = () => {
   })
 }
 
+//전체 체크 기능
 const allCheckbox = document.getElementById('select-all');
 allCheckbox.addEventListener('change', (e)=> {
   const isChecked = e.target.checked;
@@ -38,5 +39,14 @@ allCheckbox.addEventListener('change', (e)=> {
   })
 })
 
+//역으로, 만약 하나라도 체크 해제가 되면 전체 체크에도 반영이 되도록
+const otherCheckboxes = document.querySelectorAll(".row-checkbox");
+otherCheckboxes.forEach((checkBox) => {
+  checkBox.addEventListener('change', (e)=>{
+    if(!e.target.checked){
+      allCheckbox.checked = false;
+    }
+  });
+})
 
 renderTable();
