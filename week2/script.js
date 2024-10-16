@@ -53,7 +53,16 @@ const renderTable = () => {
   setupCheckboxListener();
 }
 
-
+const modal = document.getElementById('modal');
+document.getElementById("add-button").addEventListener("click", ()=>{
+  modal.style.display = "flex";
+})
+window.onclick = (e)=>{
+  //modal-content를 누르면 modal이 아닌 modal-content를 눌렀다고 인식
+  if(e.target === modal){
+    modal.style.display = "none";
+  }
+}
 
 
 
