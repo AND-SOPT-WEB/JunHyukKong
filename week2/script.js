@@ -27,9 +27,7 @@ const setupCheckboxListener = () => {
   })
 }
 
-const renderTable = () => {
-  const dataArr = JSON.parse(localStorage.getItem('data'));
-
+const renderTable = (dataArr) => {
   const tbody = document.getElementById('tbody');
   
   dataArr.forEach((data)=>{
@@ -53,6 +51,7 @@ const renderTable = () => {
   setupCheckboxListener();
 }
 
+
 const modal = document.getElementById('modal');
 document.getElementById("add-button").addEventListener("click", ()=>{
   modal.style.display = "flex";
@@ -64,6 +63,5 @@ window.onclick = (e)=>{
   }
 }
 
-
-
-renderTable();
+//초기 렌더링
+renderTable(JSON.parse(localStorage.getItem('data')));
