@@ -72,11 +72,9 @@ section#filter-section{
 	padding: 2rem;
 	background-color: azure;
 
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	gap: 1rem;
+	display: grid;
+	grid-template-rows: repeat(4, 6vh);
+	grid-gap: 1rem;
 }
 
 .row{
