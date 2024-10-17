@@ -52,7 +52,7 @@ const renderTable = (dataArr) => {
   setupCheckboxListener();
 }
 
-const filterSearch = () => {
+const getFilterItems = () => {
   const koNameInput = document.getElementById("ko-name-filter");
   const enNameInput = document.getElementById("en-name-filter");
   const githubInput = document.getElementById("github-filter");
@@ -61,27 +61,24 @@ const filterSearch = () => {
   const firstWeekInput = document.getElementById("week1-group");
   const secondWeekInput = document.getElementById("week2-group");
 
+  return [koNameInput, enNameInput, githubInput, sexSelect, positionSelect, firstWeekInput, secondWeekInput];
+}
+
+const filterSearch = () => {
+  const filterItems = getFilterItems();
+
   const dataArr = JSON.parse(localStorage.getItem('data'));
   const filteredData = dataArr.filter((data)=>{
     return (
-      (koNameInput.value === "" || data.name === koNameInput.value) &&
-      (enNameInput.value === "" || data.englishName === enNameInput.value) &&
-      (githubInput.value === "" || data.github === githubInput.value) &&
-      (sexSelect.value === "" || data.gender === sexSelect.value) &&
-      (positionSelect.value === "" || data.role === positionSelect.value) &&
-      (firstWeekInput.value === "" || data.firstWeekGroup === Number(firstWeekInput.value)) &&
-      (secondWeekInput.value === "" || data.secondWeekGroup === Number(secondWeekInput.value)) 
+      (filterItems[0].value === "" || data.name === filterItems[0].value) &&
+      (filterItems[1].value === "" || data.englishName === filterItems[1].value) &&
+      (filterItems[2].value === "" || data.github === filterItems[2].value) &&
+      (filterItems[3].value === "" || data.gender === filterItems[3].value) &&
+      (filterItems[4].value === "" || data.role === filterItems[4].value) &&
+      (filterItems[5].value === "" || data.firstWeekGroup === Number(filterItems[5].value)) &&
+      (filterItems[6].value === "" || data.secondWeekGroup === Number(filterItems[6].value)) 
     );
   })
-  console.log(filteredData);
-
-  koNameInput.value = "";
-  enNameInput.value = "";
-  githubInput.value = "";
-  sexSelect.value = "";
-  positionSelect.value = "";
-  firstWeekInput.value = "";
-  secondWeekInput.value = "";
 
   renderTable(filteredData);
 }
@@ -89,6 +86,11 @@ const filterSearch = () => {
 document.getElementById('search-button').addEventListener('click', filterSearch);
 
 const resetSearch = () => {
+  const filterItems = getFilterItems();
+  filterItems.forEach((item)=>{
+    item.value = "";
+  })
+  
   renderTable(JSON.parse(localStorage.getItem('data')));
 }
 document.getElementById('reset-button').addEventListener('click', resetSearch);
