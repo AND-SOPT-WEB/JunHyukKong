@@ -40,7 +40,7 @@ const renderTable = (dataArr) => {
       <div class="user-ko-name">${data.name}</div>
       <div class="user-en-name">${data.englishName}</div>
       <div class="user-github"> <a target="_blank" href="https://github.com/${data.github} ">${data.github}</a></div>
-      <div class="user-sex">${data.gender}</div>
+      <div class="user-sex">${data.gender === "male" ? "남성" : "여성"}</div>
       <div class="user-position">${data.role}</div>
       <div class="user-1week">${data.firstWeekGroup}</div>
       <div class="user-2week">${data.secondWeekGroup}</div>
