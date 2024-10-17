@@ -39,7 +39,7 @@ const renderTable = (dataArr) => {
       <div class="checkbox"><input type="checkbox" class="row-checkbox"></div>
       <div class="user-ko-name">${data.name}</div>
       <div class="user-en-name">${data.englishName}</div>
-      <div class="user-github"> ${data.github}</div>
+      <div class="user-github"> <a target="_blank" href="https://github.com/${data.github} ">${data.github}</a></div>
       <div class="user-sex">${data.gender}</div>
       <div class="user-position">${data.role}</div>
       <div class="user-1week">${data.firstWeekGroup}</div>
@@ -90,7 +90,7 @@ const resetSearch = () => {
   filterItems.forEach((item)=>{
     item.value = "";
   })
-  
+
   renderTable(JSON.parse(localStorage.getItem('data')));
 }
 document.getElementById('reset-button').addEventListener('click', resetSearch);
