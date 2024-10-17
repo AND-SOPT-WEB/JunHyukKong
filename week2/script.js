@@ -29,6 +29,7 @@ const setupCheckboxListener = () => {
 
 const renderTable = (dataArr) => {
   const tbody = document.getElementById('tbody');
+  tbody.innerHTML= ""; //항상 초기화 필요
   
   dataArr.forEach((data)=>{
     const tbodyRow = document.createElement('div');
@@ -51,7 +52,49 @@ const renderTable = (dataArr) => {
   setupCheckboxListener();
 }
 
+const filterSearch = () => {
+  const koNameInput = document.getElementById("ko-name-filter");
+  const enNameInput = document.getElementById("en-name-filter");
+  const githubInput = document.getElementById("github-filter");
+  const sexSelect  = document.getElementById("sex-filter");
+  const positionSelect = document.getElementById("position-filter");
+  const firstWeekInput = document.getElementById("week1-group");
+  const secondWeekInput = document.getElementById("week2-group");
 
+  const dataArr = JSON.parse(localStorage.getItem('data'));
+  const filteredData = dataArr.filter((data)=>{
+    return (
+      (koNameInput.value === "" || data.name === koNameInput.value) &&
+      (enNameInput.value === "" || data.englishName === enNameInput.value) &&
+      (githubInput.value === "" || data.github === githubInput.value) &&
+      (sexSelect.value === "" || data.gender === sexSelect.value) &&
+      (positionSelect.value === "" || data.role === positionSelect.value) &&
+      (firstWeekInput.value === "" || data.firstWeekGroup === Number(firstWeekInput.value)) &&
+      (secondWeekInput.value === "" || data.secondWeekGroup === Number(secondWeekInput.value)) 
+    );
+  })
+  console.log(filteredData);
+
+  koNameInput.value = "";
+  enNameInput.value = "";
+  githubInput.value = "";
+  sexSelect.value = "";
+  positionSelect.value = "";
+  firstWeekInput.value = "";
+  secondWeekInput.value = "";
+
+  renderTable(filteredData);
+}
+
+document.getElementById('search-button').addEventListener('click', filterSearch);
+
+const resetSearch = () => {
+  renderTable(JSON.parse(localStorage.getItem('data')));
+}
+document.getElementById('reset-button').addEventListener('click', resetSearch);
+
+
+//모달 기능 구현
 const modal = document.getElementById('modal');
 document.getElementById("add-button").addEventListener("click", ()=>{
   modal.style.display = "flex";
