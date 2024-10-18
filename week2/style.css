@@ -265,9 +265,21 @@ section#table-section{
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	align-items: center;
+	align-items: flex-start;
+
+	padding: 1rem;
 
 	gap: 1rem;
 }
 
+#modal-content h2{
+	font-size: 1.2rem;
+}
 
+#modal-content input{
+	width: 50%;
+}
+
+#modal-content select{
+	width: 20%;
+}

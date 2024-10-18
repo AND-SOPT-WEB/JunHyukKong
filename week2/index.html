@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SOPT week2 공준혁</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/0c69fdf2c0.js" crossorigin="anonymous"></script>
   <script type="module" defer src="script.js"></script>  
 </head>
 <body>
@@ -112,7 +113,12 @@
 
     <div id="modal">
       <div id="modal-content">
-        <h1>새 멤버 추가</h1>
+        <div style="display: flex; flex-wrap: nowrap; justify-content: space-between; width: 100%;">
+          <h1 style="font-size: 2rem;">새 멤버 추가</h1>
+          <i id="modal-close-icon" class="fa-solid fa-xmark" style="color: black; font-size: 2rem; cursor: pointer;"></i>
+        </div>
+        
+
         <h2>이름</h2>
         <input type="text" id="add-ko-name" placeholder="이름을 입력하세요">
         

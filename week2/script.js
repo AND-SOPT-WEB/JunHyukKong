@@ -118,6 +118,18 @@ const deleteSelectedItem = () => {
 }
 document.getElementById('delete-button').addEventListener('click', deleteSelectedItem);
 
+const modalClose = () => {
+  modal.style.display = "none";
+  
+    koNameInput.value = "";
+    enNameInput.value = "";
+    githubInput.value = "";
+    sexSelect.value = "";
+    positionSelect.value = "";
+    firstWeekInput.value = "";
+    secondWeekInput.value = "";
+}
+
 //멤버 추가
 const addMember = () => {
   const koNameInput = document.getElementById("add-ko-name");
@@ -157,15 +169,7 @@ const addMember = () => {
     localStorage.setItem('data', JSON.stringify(data));
     renderTable(data);
   
-    modal.style.display = "none";
-  
-    koNameInput.value = "";
-    enNameInput.value = "";
-    githubInput.value = "";
-    sexSelect.value = "";
-    positionSelect.value = "";
-    firstWeekInput.value = "";
-    secondWeekInput.value = "";
+    modalClose();
   }
 }
 document.getElementById('add-member-button').addEventListener("click",addMember);
@@ -182,6 +186,9 @@ window.onclick = (e)=>{
     modal.style.display = "none";
   }
 }
+
+const modalCloseBtn = document.getElementById('modal-close-icon');
+modalCloseBtn.addEventListener('click', modalClose);
 
 //초기 렌더링
 renderTable(JSON.parse(localStorage.getItem('data')));
