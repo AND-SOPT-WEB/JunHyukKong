@@ -130,31 +130,43 @@ const addMember = () => {
 
   const data = JSON.parse(localStorage.getItem('data'));
   const lastId = data[data.length-1].id;
-
-  const memeber = {
-    id: lastId + 1,
-    name: koNameInput.value,
-    englishName: enNameInput.value,
-    github: githubInput.value,
-    gender: sexSelect.value,
-    role: positionSelect.value,
-    firstWeekGroup: firstWeekInput.value,
-    secondWeekGroup: secondWeekInput.value,
+  
+  if(koNameInput.value === "" ||
+    enNameInput.value === ""||
+    githubInput.value === ""||
+    sexSelect.value === ""||
+    positionSelect.value === ""||
+    firstWeekInput.value === ""||
+    secondWeekInput.value === "")
+    {
+      alert("모든 필드를 입력해주세요!");
+    }
+  else{
+    const memeber = {
+      id: lastId + 1,
+      name: koNameInput.value,
+      englishName: enNameInput.value,
+      github: githubInput.value,
+      gender: sexSelect.value,
+      role: positionSelect.value,
+      firstWeekGroup: firstWeekInput.value,
+      secondWeekGroup: secondWeekInput.value,
+    }
+  
+    data.push(memeber);
+    localStorage.setItem('data', JSON.stringify(data));
+    renderTable(data);
+  
+    modal.style.display = "none";
+  
+    koNameInput.value = "";
+    enNameInput.value = "";
+    githubInput.value = "";
+    sexSelect.value = "";
+    positionSelect.value = "";
+    firstWeekInput.value = "";
+    secondWeekInput.value = "";
   }
-
-  data.push(memeber);
-  localStorage.setItem('data', JSON.stringify(data));
-  renderTable(data);
-
-  modal.style.display = "none";
-
-  koNameInput.value = "";
-  enNameInput.value = "";
-  githubInput.value = "";
-  sexSelect.value = "";
-  positionSelect.value = "";
-  firstWeekInput.value = "";
-  secondWeekInput.value = "";
 }
 document.getElementById('add-member-button').addEventListener("click",addMember);
 
