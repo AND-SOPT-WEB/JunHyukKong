@@ -52,6 +52,8 @@ header{
 
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
+
 }
 
 .header-item{
@@ -61,6 +63,7 @@ header{
 .header-left{
 	display: flex;
 	justify-content: flex-start;
+	margin-left: 2rem;
 }
 
 .header-title{
@@ -71,6 +74,7 @@ header{
 .header-right{
 	display: flex;
 	justify-content: flex-end;
+	margin-right: 2rem;
 }
 
 main{
