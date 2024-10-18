@@ -118,6 +118,46 @@ const deleteSelectedItem = () => {
 }
 document.getElementById('delete-button').addEventListener('click', deleteSelectedItem);
 
+//멤버 추가
+const addMember = () => {
+  const koNameInput = document.getElementById("add-ko-name");
+  const enNameInput = document.getElementById("add-en-name");
+  const githubInput = document.getElementById("add-github");
+  const sexSelect  = document.getElementById("add-sex");
+  const positionSelect = document.getElementById("add-position");
+  const firstWeekInput = document.getElementById("add-1week");
+  const secondWeekInput = document.getElementById("add-2week");
+
+  const data = JSON.parse(localStorage.getItem('data'));
+  const lastId = data[data.length-1].id;
+
+  const memeber = {
+    id: lastId + 1,
+    name: koNameInput.value,
+    englishName: enNameInput.value,
+    github: githubInput.value,
+    gender: sexSelect.value,
+    role: positionSelect.value,
+    firstWeekGroup: firstWeekInput.value,
+    secondWeekGroup: secondWeekInput.value,
+  }
+
+  data.push(memeber);
+  localStorage.setItem('data', JSON.stringify(data));
+  renderTable(data);
+
+  modal.style.display = "none";
+
+  koNameInput.value = "";
+  enNameInput.value = "";
+  githubInput.value = "";
+  sexSelect.value = "";
+  positionSelect.value = "";
+  firstWeekInput.value = "";
+  secondWeekInput.value = "";
+}
+document.getElementById('add-member-button').addEventListener("click",addMember);
+
 
 //모달 기능 구현
 const modal = document.getElementById('modal');
