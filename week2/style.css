@@ -54,6 +54,25 @@ header{
 	justify-content: space-between;
 }
 
+.header-item{
+	flex: 1;
+}
+
+.header-left{
+	display: flex;
+	justify-content: flex-start;
+}
+
+.header-title{
+	display: flex;
+	justify-content: center;
+}
+
+.header-right{
+	display: flex;
+	justify-content: flex-end;
+}
+
 main{
 	display: flex;
 	flex-direction: column;

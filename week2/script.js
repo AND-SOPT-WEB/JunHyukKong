@@ -64,6 +64,7 @@ const getFilterItems = () => {
   return [koNameInput, enNameInput, githubInput, sexSelect, positionSelect, firstWeekInput, secondWeekInput];
 }
 
+//검색
 const filterSearch = () => {
   const filterItems = getFilterItems();
 
@@ -82,9 +83,9 @@ const filterSearch = () => {
 
   renderTable(filteredData);
 }
-
 document.getElementById('search-button').addEventListener('click', filterSearch);
 
+//초기화 
 const resetSearch = () => {
   const filterItems = getFilterItems();
   filterItems.forEach((item)=>{
@@ -94,6 +95,8 @@ const resetSearch = () => {
   renderTable(JSON.parse(localStorage.getItem('data')));
 }
 document.getElementById('reset-button').addEventListener('click', resetSearch);
+
+
 
 
 //모달 기능 구현
