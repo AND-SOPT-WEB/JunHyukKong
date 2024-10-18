@@ -96,7 +96,17 @@ const resetSearch = () => {
 }
 document.getElementById('reset-button').addEventListener('click', resetSearch);
 
-
+//선택 삭제
+const deleteSelectedItem = () => {
+  const rowCheckBoxes = document.querySelectorAll('.row-checkbox');
+  rowCheckBoxes.forEach((checkBox)=>{
+    if(checkBox.checked){
+      const parentNode = checkBox.closest('.tbody-row');
+      if(parentNode) parentNode.remove();
+    }
+  })
+}
+document.getElementById('delete-button').addEventListener('click', deleteSelectedItem);
 
 
 //모달 기능 구현
