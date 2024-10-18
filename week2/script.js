@@ -34,6 +34,8 @@ const renderTable = (dataArr) => {
   dataArr.forEach((data)=>{
     const tbodyRow = document.createElement('div');
     tbodyRow.classList.add('tbody-row');
+    tbodyRow.setAttribute('id', data.id);
+    
     //취약하지만, 외부적으로 거드릴 수는 없기 때문에 innerHTML로 편하게 렌더링
     tbodyRow.innerHTML = `
       <div class="checkbox"><input type="checkbox" class="row-checkbox"></div>
@@ -98,13 +100,21 @@ document.getElementById('reset-button').addEventListener('click', resetSearch);
 
 //선택 삭제
 const deleteSelectedItem = () => {
+  const oldData = JSON.parse(localStorage.getItem('data'));
   const rowCheckBoxes = document.querySelectorAll('.row-checkbox');
+  const willRemoveId = [];
+
   rowCheckBoxes.forEach((checkBox)=>{
     if(checkBox.checked){
       const parentNode = checkBox.closest('.tbody-row');
-      if(parentNode) parentNode.remove();
+      willRemoveId.push(Number(parentNode.id));
     }
   })
+
+  const newData = oldData.filter((item)=>(!willRemoveId.includes(item.id)));
+
+  localStorage.setItem('data', JSON.stringify(newData));
+  renderTable(newData);
 }
 document.getElementById('delete-button').addEventListener('click', deleteSelectedItem);
 
