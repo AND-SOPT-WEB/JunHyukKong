@@ -32,21 +32,21 @@ const renderTable = (dataArr) => {
   tbody.innerHTML= ""; //항상 초기화 필요
   
   dataArr.forEach((data)=>{
-    const tbodyRow = document.createElement('div');
+    const tbodyRow = document.createElement('tr');
     tbodyRow.classList.add('tbody-row');
     tbodyRow.setAttribute('id', data.id);
     
-    //취약하지만, 외부적으로 거드릴 수는 없기 때문에 innerHTML로 편하게 렌더링
+    // <td> 요소로 데이터를 렌더링
     tbodyRow.innerHTML = `
-      <div class="checkbox"><input type="checkbox" class="row-checkbox"></div>
-      <div class="user-ko-name">${data.name}</div>
-      <div class="user-en-name">${data.englishName}</div>
-      <div class="user-github"> <a target="_blank" href="https://github.com/${data.github} ">${data.github}</a></div>
-      <div class="user-sex">${data.gender === "male" ? "남성" : "여성"}</div>
-      <div class="user-position">${data.role}</div>
-      <div class="user-1week">${data.firstWeekGroup}</div>
-      <div class="user-2week">${data.secondWeekGroup}</div>
-    `
+      <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+      <td class="user-ko-name">${data.name}</td>
+      <td class="user-en-name">${data.englishName}</td>
+      <td class="user-github"><a target="_blank" href="https://github.com/${data.github}">${data.github}</a></td>
+      <td class="user-sex">${data.gender === "male" ? "남성" : "여성"}</td>
+      <td class="user-position">${data.role}</td>
+      <td class="user-1week">${data.firstWeekGroup}</td>
+      <td class="user-2week">${data.secondWeekGroup}</td>
+    `;
 
     tbody.appendChild(tbodyRow);
   })

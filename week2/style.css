@@ -156,7 +156,7 @@ section#table-section{
 	gap: 1rem;
 
 	width: 70vw;
-	background-color: wheat;
+	background-color: none;
 }
 
 #table-section > .button-wrapper > button {
@@ -217,13 +217,20 @@ section#table-section{
 
 
 
-#tbody{
+
+#tbody, thead{
 	display: flex;
 	flex-direction: column;
 	width: 100%;
 }
 
 #tbody .tbody-row{
+	width: 100%;
+	display: flex;
+	height: 5vh;
+}
+
+thead .thead-row{
 	width: 100%;
 	display: flex;
 	height: 5vh;
@@ -238,6 +245,21 @@ section#table-section{
 #tbody .user-1week,
 #tbody .user-2week {
     background-color: white;
+		border: 1px solid black;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+}
+
+thead .checkbox,
+thead .user-ko-name,
+thead .user-en-name,
+thead .user-github,
+thead .user-sex,
+thead .user-position,
+thead .user-1week,
+thead .user-2week {
+    background-color: aliceblue;
 		border: 1px solid black;
 		display: flex;
 		justify-content: center;
