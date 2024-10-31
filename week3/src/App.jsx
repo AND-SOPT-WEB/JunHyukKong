@@ -1,21 +1,21 @@
 import { useState } from 'react'
 import Header from './components/Header'
-import Game from './components/Game';
-import Ranking from './components/Ranking';
+import Game from './pages/Game';
+import Ranking from './pages/Ranking';
 import styled from "@emotion/styled"
 
 
 function App() {
   const [mode, setMode] = useState("game");
-  const [level, setLevel] = useState("level");
+  const [level, setLevel] = useState(1);
   const [time, setTime] = useState(0);
 
   return (
     <>
-    <Header mode={mode} setMode={setMode} setLevel={setLevel} time={setTime}/>
+    <Header mode={mode} setMode={setMode} setLevel={setLevel} time={time}/>
     <Body>
       {
-        mode === "game" ? <Game/> : <Ranking/>
+        mode === "game" ? <Game level={level} setTime={setTime}/> : <Ranking/>
       }
     </Body>
     

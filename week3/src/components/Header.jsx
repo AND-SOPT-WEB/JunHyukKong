@@ -13,22 +13,22 @@ const Header = ({mode, setMode, setLevel, time = 0}) => {
   }
 
   const handleLevelChange = (event) => {
-    setLevel(event.target.value); 
+    setLevel(Number(event.target.value)); 
   };
 
   return (
     <HeaderContainer>
-      <div style={{"display": "flex", "gap": "10px","margin-left": "30px"}}>
+      <div style={{"display": "flex", "gap": "10px","marginLeft": "30px"}}>
         <Title>1 to 50</Title>
         <ModeButton $isSelected={mode ==="game"} onClick={setModeGame}>게임</ModeButton>
         <ModeButton $isSelected={mode ==="ranking"} onClick={setModeRanking}>랭킹</ModeButton>
       </div>
 
-      <div style={{"display": "flex", "gap": "10px","margin-right": "60px"}}>
+      <div style={{"display": "flex", "gap": "10px","marginRight": "60px"}}>
         <LevelSelect onChange={handleLevelChange}>
-          <LevelOption value="1">Level 1</LevelOption>
-          <LevelOption value="2">Level 2</LevelOption>
-          <LevelOption value="3">Level 3</LevelOption>
+          <LevelOption value={1}>Level 1</LevelOption>
+          <LevelOption value={2}>Level 2</LevelOption>
+          <LevelOption value={3}>Level 3</LevelOption>
         </LevelSelect>
         <div>
           {time}
