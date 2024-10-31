@@ -15,7 +15,7 @@ const GlobalStyle = css`
   /* HTML, Body 기본 스타일 */
   html, body {
     width: 100%;
-    height: 100%;
+    height: auto;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     background-color: #f5f5f5;
     color: #333;

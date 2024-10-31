@@ -1,17 +1,31 @@
 import React from 'react'
 import styled from '@emotion/styled'
+import {css} from "@emotion/react"
 
-const Header = ({setMode, setLevel, time = 0}) => {
+
+const Header = ({mode, setMode, setLevel, time = 0}) => {
+  const setModeGame = () => {
+    setMode("game");
+  }
+
+  const setModeRanking = () => {
+    setMode("ranking");
+  }
+
+  const handleLevelChange = (event) => {
+    setLevel(event.target.value); 
+  };
+
   return (
     <HeaderContainer>
       <div style={{"display": "flex", "gap": "10px","margin-left": "30px"}}>
         <Title>1 to 50</Title>
-        <ModeButton>게임</ModeButton>
-        <ModeButton>랭킹</ModeButton>
+        <ModeButton $isSelected={mode ==="game"} onClick={setModeGame}>게임</ModeButton>
+        <ModeButton $isSelected={mode ==="ranking"} onClick={setModeRanking}>랭킹</ModeButton>
       </div>
 
       <div style={{"display": "flex", "gap": "10px","margin-right": "60px"}}>
-        <LevelSelect>
+        <LevelSelect onChange={handleLevelChange}>
           <LevelOption value="1">Level 1</LevelOption>
           <LevelOption value="2">Level 2</LevelOption>
           <LevelOption value="3">Level 3</LevelOption>
@@ -54,8 +68,12 @@ const ModeButton = styled.button`
   border: 1px solid pink;
   background-color: none;
   &:hover{
-    background-color: rgba(255, 0, 0,0.5);
+    background-color: rgba(255, 0, 0,0.2);
   }
+
+  ${({$isSelected}) => $isSelected && css`
+    background-color: rgba(255, 0, 0,0.5);
+  `}
 `
 
 const LevelSelect = styled.select`
