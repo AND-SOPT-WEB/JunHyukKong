@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import {css} from "@emotion/react"
 
 
-const Header = ({mode, setMode, setLevel, time = 0}) => {
+const Header = ({mode, setMode, setLevel, time}) => {
   const setModeGame = () => {
     setMode("game");
   }
