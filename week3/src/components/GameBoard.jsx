@@ -12,6 +12,7 @@ const GameBoard = ({level, time, targetNumber, setTargetNumber, setTime}) => {
   const [cells, setCells] = useState([]);
   const [secondCells, setSecondCells] = useState([]);
   const [flashNumber, setFlashNumber] = useState(null);
+  const [gameCount, setGameCount] = useState(0);
 
   const intervalRef = useRef(null);
 
@@ -53,7 +54,7 @@ const GameBoard = ({level, time, targetNumber, setTargetNumber, setTime}) => {
         ]));
       }
 
-      initGame();
+      setTimeout(()=>initGame(),500);
     }
 
     //clean-up 함수 자체를 반환
@@ -72,6 +73,14 @@ const GameBoard = ({level, time, targetNumber, setTargetNumber, setTime}) => {
     setTargetNumber(1);
     setFlashNumber(null);
     setTime(0);
+
+    // 배경색 초기화
+    document.querySelectorAll('.flash').forEach(element => {
+      element.classList.remove('flash');
+      element.style.backgroundColor = 'pink';
+    });
+
+    setGameCount((prev)=>prev+1);
   }
   
 
@@ -110,7 +119,7 @@ const GameBoard = ({level, time, targetNumber, setTargetNumber, setTime}) => {
     2. 숫자가 제멋대로임 (1~9가 아님)
   */
   return (
-    <Grid $lineCount = {lineCount} >
+    <Grid $lineCount = {lineCount} key={gameCount} >
       {cells.map((number, index)=> (
         <GridItem 
           key={`${index}`} 
