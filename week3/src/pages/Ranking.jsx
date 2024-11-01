@@ -1,20 +1,36 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from "@emotion/styled"
 
 const Ranking = ({formattedTime}) => {
-  const records = JSON.parse(localStorage.getItem('records') || []); //단락 평가 
-  records.sort((a,b)=> {
-    if(a.level === b.level){
-      return a.time - b.time;
-    }else{
-      return b.level - a.level;
-    }
-  });
+  const [records, setRecords] = useState([]);
+
+  useEffect(()=>{
+    const tempRecords = JSON.parse(localStorage.getItem('records') || "[]");  //단락 평가
+    tempRecords.sort((a,b)=> {
+      if(a.level === b.level){
+        return a.time - b.time;
+      }else{
+        return b.level - a.level;
+      }
+    });
+
+    setRecords(tempRecords);
+
+  },[]);
+
+  
+
+
+  const handleClickReset = () => {
+    localStorage.removeItem('records');
+    setRecords([]);
+  }
+
   return (
     <RankingContainer>
       <div style={{display:"flex", width:"100%",flexDirection:"row", justifyContent:"center",position:"relative"}}>
         <RankingTitle>랭킹</RankingTitle>
-        <ResetButton>🤍초기화</ResetButton>
+        <ResetButton onClick={handleClickReset}>🤍초기화</ResetButton>
       </div>
       
       <RankingTable>
