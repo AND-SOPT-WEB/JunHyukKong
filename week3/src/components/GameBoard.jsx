@@ -30,7 +30,7 @@ const GameBoard = ({level, time, targetNumber, setTargetNumber, setTime}) => {
     
     //게임 종료시
     if(targetNumber > endNumber) {
-      alert("해결!");
+      //alert("해결!");
       clearInterval(intervalRef.current);
       //시작 timestamp, level, time -> 로컬 스토리지 저장 필요
       
@@ -98,6 +98,7 @@ const GameBoard = ({level, time, targetNumber, setTargetNumber, setTime}) => {
       //애니메이션(0.5s)이 끝난 뒤에 숫자 변경
       setTimeout(()=>{
         setCells((cells)=>cells.map((number,idx)=> idx===index ? secondCells[idx] : number));
+        setFlashNumber(null);
       },500);
     }
   }  
