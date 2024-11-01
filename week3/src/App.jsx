@@ -24,7 +24,7 @@ function App() {
     <Header mode={mode} setMode={setMode} setLevel={setLevel} time={formattedTime(time)}/>
     <Body>
       {
-        mode === "game" ? <Game level={level} time={time} setTime={setTime}/> : <Ranking/>
+        mode === "game" ? <Game level={level} time={time} setTime={setTime}/> : <Ranking formattedTime={formattedTime}/>
       }
     </Body>
     
