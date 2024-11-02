@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SOPT week2 공준혁</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/0c69fdf2c0.js" crossorigin="anonymous"></script>
+  <script type="module" defer src="script.js"></script>  
+</head>
+<body>
+    <header >
+      <div class="header-item header-left" ><i class="fa-solid fa-house" style="font-size: 1.5rem;"></i></div>
+      <div class="header-item header-title" style="font-size: 2rem;">회원 관리 페이지</div>
+      <div class="header-item header-right"><span>~엄청 긴 텍스트입니다~</span></div>
+    </header>
+
+    <main>
+      <section id="filter-section">
+        <article class="row box1">
+          <div class="filter-box">
+            <div class="filter-name">이름</div>
+            <input id="ko-name-filter" placeholder="이름을 입력하세요">
+          </div>
+        </article>
+
+        <article class="row box2">
+          <div class="filter-box">
+            <div class="filter-name">영문이름</div>
+            <input id="en-name-filter" placeholder="영문이름을 입력하세요">
+          </div>
+        </article>
+
+        <article class="row box3">
+          <div class="filter-box">
+            <div class="filter-name">Github</div>
+            <input id="github-filter" placeholder="Github ID 입력하세요">
+          </div>
+          <div class="filter-box">
+            <div class="filter-name">성별</div>
+            <select id="sex-filter">
+              <option value="">성별 선택</option>
+              <option value="male">남성</option>
+              <option value="female">여성</option>
+            </select>
+          </div>
+          <div class="filter-box">
+            <div class="filter-name">역할</div>
+            <select id="position-filter">
+              <option value="">역할 선택</option>
+              <option value="YB">YB</option>
+              <option value="OB">OB</option>
+            </select>
+          </div>
+        </article>
+
+        <article class="row box4">
+          <div class="filter-box">
+            <div class="filter-name">1주차 금잔디조</div>
+            <input id="week1-group" type="number" placeholder="1주차 금잔디조를 입력하세요(1~9)">
+          </div>
+
+          <div class="filter-box">
+            <div class="filter-name">2주차 금잔디조</div>
+            <input id="week2-group" type="number" placeholder="2주차 금잔디조를 입력하세요(1~9)">
+          </div>
+        </article>
+        
+        <div class="button-wrapper">
+          <button id="reset-button">초기화</button>
+          <button id="search-button">검색</button>
+        </div>
+      </section>
+
+      <section id="table-section">
+        <div class="button-wrapper">
+          <button id="delete-button">선택 삭제</button>
+          <button id="add-button">추가</button>
+        </div>
+
+        <table id="table">
+          <thead>
+            <tr class="thead-row">
+              <th scope="col" class="checkbox"><input type="checkbox" id="select-all"></th>
+              <th scope="col" class="user-ko-name">이름</th>
+              <th scope="col" class="user-en-name">영문이름</th>
+              <th scope="col" class="user-github">Github</th>
+              <th scope="col" class="user-sex">성별</th>
+              <th scope="col" class="user-position">역할</th>
+              <th scope="col" class="user-1week">1주차 금잔디</th>
+              <th scope="col" class="user-2week">2주차 금잔디</th>
+            </tr>
+          </thead>
+          <tbody id="tbody">
+            <!--여기에 내용들 렌더링 될 예정-->
+            <tr class="tbody-row">
+              <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+              <td class="user-ko-name">공준혁</td>
+              <td class="user-en-name">Kong Jun Hyuk</td>
+              <td class="user-github"><a target="_blank" href="https://github.com/ocahs9">ocahs9</a></td>
+              <td class="user-sex">남자</td>
+              <td class="user-position">OB</td>
+              <td class="user-1week">5</td>
+              <td class="user-2week">7</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </section>
+    </main>
+
+    <div id="modal">
+      <div id="modal-content">
+        <div style="display: flex; flex-wrap: nowrap; justify-content: space-between; width: 100%;">
+          <h1 style="font-size: 2rem;">새 멤버 추가</h1>
+          <i id="modal-close-icon" class="fa-solid fa-xmark" style="color: black; font-size: 2rem; cursor: pointer;"></i>
+        </div>
+        
+
+        <h2>이름</h2>
+        <input type="text" id="add-ko-name" placeholder="이름을 입력하세요">
+        
+        <h2>영문 이름</h2>
+        <input type="text" id="add-en-name" placeholder="영문 이름을 입력하세요">
+
+        <h2>Github ID</h2>
+        <input type="text" id="add-github" placeholder="깃허브 id를 입력하세요">
+
+        <h2>성별</h2>
+        <select id="add-sex">
+          <option value="">성별 선택</option>
+          <option value="male">남성</option>
+          <option value="female">여성</option>
+        </select>
+
+        <h2>역할</h2>
+        <select id="add-position">
+          <option value="">역할 선택</option>
+          <option value="YB">YB</option>
+          <option value="OB">OB</option>
+        </select>
+
+        <h2>1주차 금잔디조</h2>
+        <input type="number" id="add-1week" placeholder="1주차 금잔디조를 입력하세요(1~9)">
+
+        <h2>2주차 금잔디조</h2>
+        <input type="number" id="add-2week" placeholder="2주차 금잔디조를 입력하세요(1~9)">
+
+        <button id="add-member-button" style="width: 30vw; background-color: red;">추가</button>
+      </div>
+    </div>
+
+</body>
+</html>
