@@ -7,6 +7,6 @@ import GlobalStyle from "./style/global";
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Global styles={GlobalStyle}/>
-    <App />
+    <App/>
   </StrictMode>,
 )

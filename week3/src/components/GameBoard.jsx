@@ -1,9 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 import styled from "@emotion/styled"
+import Modal from './Modal';
 
-//아직 시간 가는거랑, 블록 없어지는 거 구현 x
 const GameBoard = ({level, time, targetNumber, setTargetNumber, setTime}) => {
-
 
   const lineCount = (level + 2);
   const cellCount = lineCount ** 2;
@@ -13,6 +12,7 @@ const GameBoard = ({level, time, targetNumber, setTargetNumber, setTime}) => {
   const [secondCells, setSecondCells] = useState([]);
   const [flashNumber, setFlashNumber] = useState(null);
   const [gameCount, setGameCount] = useState(0);
+  const[isModalOpen, setIsModalOpen] = useState(false);
 
   const intervalRef = useRef(null);
 
@@ -31,7 +31,7 @@ const GameBoard = ({level, time, targetNumber, setTargetNumber, setTime}) => {
     
     //게임 종료시
     if(targetNumber > endNumber) {
-      //alert("해결!");
+      setIsModalOpen(true);
       clearInterval(intervalRef.current);
       //시작 timestamp, level, time -> 로컬 스토리지 저장 필요
       
@@ -54,12 +54,17 @@ const GameBoard = ({level, time, targetNumber, setTargetNumber, setTime}) => {
         ]));
       }
 
-      setTimeout(()=>initGame(),500);
+      
     }
 
     //clean-up 함수 자체를 반환
     return ()=>clearInterval(intervalRef.current);
   },[targetNumber])
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+    setTimeout(()=>initGame(),0); //비동기 활용 -> 초기화 안되는 거 방지
+  }
 
 
   const initGame = () => {
@@ -112,6 +117,8 @@ const GameBoard = ({level, time, targetNumber, setTargetNumber, setTime}) => {
     }
   }  
 
+  
+
   // console.log(cells, secondCells);
   //2가지 문제 발생
   /*
@@ -119,6 +126,7 @@ const GameBoard = ({level, time, targetNumber, setTargetNumber, setTime}) => {
     2. 숫자가 제멋대로임 (1~9가 아님)
   */
   return (
+    <>
     <Grid $lineCount = {lineCount} key={gameCount} >
       {cells.map((number, index)=> (
         <GridItem 
@@ -135,6 +143,13 @@ const GameBoard = ({level, time, targetNumber, setTargetNumber, setTime}) => {
         </GridItem>
       ))}
     </Grid>
+    {isModalOpen && 
+      <Modal onClose={handleModalClose}>
+        <h1>성공!</h1>
+        <p>기록이 저장 완료</p>
+      </Modal>}
+    </>
+    
   )
 }
 
