@@ -24,6 +24,7 @@ const Header = ({mode, setMode, setLevel, time}) => {
         <ModeButton $isSelected={mode ==="ranking"} onClick={setModeRanking}>랭킹</ModeButton>
       </div>
 
+      {mode === "game" && 
       <div style={{"display": "flex", "gap": "10px","marginRight": "60px"}}>
         <LevelSelect onChange={handleLevelChange}>
           <LevelOption value={1}>Level 1</LevelOption>
@@ -33,7 +34,8 @@ const Header = ({mode, setMode, setLevel, time}) => {
         <div>
           {time}
         </div>
-      </div>
+      </div>}
+      
     </HeaderContainer>
   )
 }
