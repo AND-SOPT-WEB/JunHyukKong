@@ -6,6 +6,11 @@ const MyHobby = () => {
   const [no, setNo] = useState<number|null>(null);
   const [hobby, setHobby] = useState("");
   const [otherHobby, setOtherHobby] = useState("");
+  const [notice, setNotice] = useState("");
+
+  useEffect(()=>{
+    setNotice(`${no}번 사용자의 취미: ${otherHobby}`);
+  },[otherHobby])
 
   const getUserHobby = async() => {
     try{
@@ -42,7 +47,7 @@ const MyHobby = () => {
       <CategoryTitle>다른 사람들의 취미</CategoryTitle>
       <Input type='number' placeholder='사용자 번호' value={no || ""} onChange={(e)=>setNo(Number(e.target.value))}/>
       <SearchButton onClick={()=>getOtherUserHobby()}>검색</SearchButton>
-      <Notice>{`${no}번 사용자의 취미: ${otherHobby}`}</Notice>
+      <Notice>{otherHobby && notice}</Notice>
     </HobbyLayout>
   )
 }
@@ -64,7 +69,7 @@ const CategoryTitle = styled.h1`
 
 const CategoryText = styled.p`
   ${({ theme }) => theme.fonts.title_14pt_Bold};
-  color: ${({ theme }) => theme.colors.Gray_stroke};
+  color: ${({ theme }) => theme.colors.Sub_purple};
 `
 
 const Input = styled.input`
