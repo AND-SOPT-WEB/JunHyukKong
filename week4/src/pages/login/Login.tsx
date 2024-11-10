@@ -1,8 +1,14 @@
 import styled from '@emotion/styled'
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 
 const Login = () => {
+  const navigate = useNavigate();
+  const handleClickSignup = () => {
+    navigate("/signup");
+  }
+
   return (
     <Flex>
       <LoginWrapper>
@@ -11,7 +17,7 @@ const Login = () => {
           <Input placeholder='아이디'/>
           <Input placeholder='비밀번호'/>
           <LoginButton>로그인</LoginButton>
-          <SignUpText>회원가입</SignUpText>
+          <SignUpText onClick={handleClickSignup}>회원가입</SignUpText>
         </LoginLayout>
       </LoginWrapper>
     </Flex>
