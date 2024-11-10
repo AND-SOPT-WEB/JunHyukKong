@@ -4,6 +4,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Login from "./pages/login/Login";
 import SignUp from "./pages/signup/SignUp";
 import MyPage from "./pages/mypage/MyPage";
+import { Navigate } from "react-router-dom";
 
 const router = createBrowserRouter([
   {
@@ -23,7 +24,7 @@ const router = createBrowserRouter([
         element: <ProtectedRoute element={<MyPage/>}/>
       }
     ],
-    errorElement: <div>404!</div>
+    errorElement: <Navigate to={"/"}/>
   }
 ])
 
