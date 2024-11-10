@@ -1,11 +1,31 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from '@emotion/styled'
+import { verifiedInstance } from '../../apis/axios'
 
 const MyHobby = () => {
+  const [hobby, setHobby] = useState("");
+  
+  const getUserHobby = async() => {
+    try{
+      const response = await verifiedInstance.get("/user/my-hobby");
+      return response.data.result.hobby;
+    }catch(e){
+      console.log(e);
+    }
+  }
+
+  useEffect(()=>{
+    const fetch = async() => {
+      const hobby = await getUserHobby();
+      setHobby(hobby);
+    }
+    fetch();
+  },[])
+
   return (
     <HobbyLayout>
       <CategoryTitle>나의 취미</CategoryTitle>
-      <CategoryText>{/*api로 받아온 나의 취미 담길 예정 */}</CategoryText>
+      <CategoryText>{hobby}</CategoryText>
 
       <CategoryTitle>다른 사람들의 취미</CategoryTitle>
       <Input placeholder='사용자 번호'/>
