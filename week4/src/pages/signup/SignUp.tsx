@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styled from '@emotion/styled'
 import SignupSteps from '../../components/signup/SignupSteps';
 import { useNavigate } from 'react-router-dom';
+import instance from '../../apis/axios';
 
 type handleChangeType = (field: string, value: string) => void;
 
@@ -19,21 +20,37 @@ const SignUp = () => {
     if(step < 3) setStep((prev)=>prev+1);
   }
 
-  const handleComplete = () => {
+  const signupRequest = async() => {
+    try{
+      const response = await instance.post("/user", {
+        username: formData.id,
+        password: formData.password,
+        hobby: formData.hobby,
+      });
+      return response.data.result.no;
+
+    }catch(e){
+      console.log(e);
+    }
+  }
+
+  const handleComplete = async() => {
     //여기서 api 요청 쏘고, 응답 받아와야함 (try, catch 필요) 
-
-    //성공시 alert
-    alert(`회원가입 성공! 회원 번호 : `);
-
-    //실패시 alert (추후 작성 예정)
-    navigate("/");
+    try{
+      const no = await signupRequest();
+      console.log(no);
+      alert(`회원가입 성공! 회원 번호 : ${no}`);
+      navigate("/");
+    }catch(error){
+      alert("회원가입 실패");
+    }    
   }
 
   return (
     <Flex>
       <SignUpWrapper>
         <SignupTitle>회원가입</SignupTitle>
-        <SignupSteps currentStep={step} formData={formData} onChange={handleChange} onNext={handleNext} onComplete= {handleComplete}/>
+        <SignupSteps currentStep={step} formData={formData} onChange={handleChange} onNext={handleNext} onComplete= {()=>handleComplete()}/>
       </SignUpWrapper>
     </Flex>
   )
