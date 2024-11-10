@@ -3,6 +3,7 @@ import styled from '@emotion/styled'
 import SignupSteps from '../../components/signup/SignupSteps';
 import { useNavigate } from 'react-router-dom';
 import instance from '../../apis/axios';
+import axios from 'axios';
 
 type handleChangeType = (field: string, value: string) => void;
 
@@ -31,6 +32,7 @@ const SignUp = () => {
 
     }catch(e){
       console.log(e);
+      throw new Error("회원가입에 실패했습니다.");
     }
   }
 
@@ -42,7 +44,12 @@ const SignUp = () => {
       alert(`회원가입 성공! 회원 번호 : ${no}`);
       navigate("/");
     }catch(error){
-      alert("회원가입 실패");
+      alert(error.message);
+      // if(axios.isAxiosError(error)){
+      //   alert(error.message);
+      // }else{
+      //   alert("회원가입 실패용");
+      // }
     }    
   }
 
