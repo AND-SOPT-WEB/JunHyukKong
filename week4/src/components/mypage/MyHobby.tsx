@@ -3,11 +3,23 @@ import styled from '@emotion/styled'
 import { verifiedInstance } from '../../apis/axios'
 
 const MyHobby = () => {
+  const [no, setNo] = useState<number|null>(null);
   const [hobby, setHobby] = useState("");
-  
+  const [otherHobby, setOtherHobby] = useState("");
+
   const getUserHobby = async() => {
     try{
       const response = await verifiedInstance.get("/user/my-hobby");
+      return response.data.result.hobby;
+    }catch(e){
+      console.log(e);
+    }
+  }
+
+  const getOtherUserHobby = async() => {
+    try{
+      const response = await verifiedInstance.get(`/user/${no}/hobby`);
+      setOtherHobby(response.data.result.hobby);
       return response.data.result.hobby;
     }catch(e){
       console.log(e);
@@ -28,9 +40,9 @@ const MyHobby = () => {
       <CategoryText>{hobby}</CategoryText>
 
       <CategoryTitle>다른 사람들의 취미</CategoryTitle>
-      <Input placeholder='사용자 번호'/>
-      <SearchButton>검색</SearchButton>
-      <Notice>{"zz"/*검색 결과 담길 예정 */}</Notice>
+      <Input type='number' placeholder='사용자 번호' value={no || ""} onChange={(e)=>setNo(Number(e.target.value))}/>
+      <SearchButton onClick={()=>getOtherUserHobby()}>검색</SearchButton>
+      <Notice>{`${no}번 사용자의 취미: ${otherHobby}`}</Notice>
     </HobbyLayout>
   )
 }
