@@ -28,6 +28,7 @@ const MyHobby = () => {
       return response.data.result.hobby;
     }catch(e){
       console.log(e);
+      alert("검색에 실패했습니다.");
     }
   }
 
