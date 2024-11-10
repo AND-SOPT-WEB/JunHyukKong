@@ -1,0 +1,142 @@
+import styled from '@emotion/styled'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import instance from '../../apis/axios';
+import axios, {AxiosError} from 'axios';
+
+
+const Login = () => {
+  const [id, setId] = useState("");
+  const [pw, setPw] = useState("");
+  const navigate = useNavigate();
+  const handleClickSignup = () => {
+    navigate("/signup");
+  }
+
+  const requestLogin = async() => {
+    try{
+      const response = await instance.post("/login",{
+        username: id,
+        password: pw,
+      })
+
+      return response.data.result.token;
+    }catch(error){
+      if(axios.isAxiosError(error)){ //타입 가드 필요(아니면 기본적으로 unknown으로 판단)
+        throw new Error(error.response?.data?.code);
+      }      
+    }
+  }
+  const handleLogin = async() => {
+    try{
+      const token = await requestLogin();
+      localStorage.setItem('user', token);
+      navigate('/mypage');
+    }catch(e){
+      if(e instanceof Error){
+        if(e.message === "01"){
+          alert(`로그인 실패 - 비밀번호가 다릅니다.`);
+        }
+      }
+    }
+  }
+
+
+  return (
+    <Flex>
+      <LoginWrapper>
+        <LoginTitle>로그인</LoginTitle>
+        <LoginLayout>
+          <Input placeholder='아이디' value={id} onChange={(e)=>setId(e.target.value)}/>
+          <Input type='password' placeholder='비밀번호' value={pw} onChange={(e)=>setPw(e.target.value)}/>
+          <LoginButton onClick={handleLogin}>로그인</LoginButton>
+          <SignUpText onClick={handleClickSignup}>회원가입</SignUpText>
+        </LoginLayout>
+      </LoginWrapper>
+    </Flex>
+    
+  )
+}
+
+export default Login
+
+
+const Flex = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100vw;
+  height: 100vh;
+`
+
+const LoginWrapper = styled.main`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+
+  max-width: 60rem;
+  width: 60%;
+  height: 100vh;
+
+  padding: 10vw 10vh;
+`;
+
+const LoginTitle = styled.h1`
+  ${({ theme }) => theme.fonts.title_26pt_Bold};
+  color: ${({ theme }) => theme.colors.Primary_Black};
+`
+
+const LoginLayout = styled.section`
+  width: 100%;
+  height: 50%;
+  
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`
+
+
+const Input = styled.input`
+    width: 100%;
+    height: 25%;
+    
+    border-radius: 5px;
+    border: 1px solid gray;
+    
+    ${({ theme }) => theme.fonts.sub_12pt};
+    color: ${({ theme }) => theme.colors.Black_Gra};
+    &::placeholder{
+      color: gray;
+    };
+`;
+
+const LoginButton = styled.button`
+  width: 100%;
+  height: 25%;
+ 
+  border-radius: 5px;
+  border: 1px solid #db6a6a;
+  background-color: #db6a6a;
+  ${({ theme }) => theme.fonts.title_14pt_Bold};
+  color: wheat;
+
+  &:hover {
+    background-color: #b55757; /* hover 시 바뀔 배경색 */
+  };
+  transition: background-color 0.3s ease;
+`
+
+const SignUpText = styled.div`
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  text-decoration: underline;
+  cursor: pointer;
+  color: gray;
+  ${({ theme }) => theme.fonts.sub_12pt_bold};
+  height: 25%;
+`
