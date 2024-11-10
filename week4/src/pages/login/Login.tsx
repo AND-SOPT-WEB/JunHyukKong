@@ -1,22 +1,55 @@
 import styled from '@emotion/styled'
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import instance from '../../apis/axios';
+import axios, {AxiosError} from 'axios';
 
 
 const Login = () => {
+  const [id, setId] = useState("");
+  const [pw, setPw] = useState("");
   const navigate = useNavigate();
   const handleClickSignup = () => {
     navigate("/signup");
   }
+
+  const requestLogin = async() => {
+    try{
+      const response = await instance.post("/login",{
+        username: id,
+        password: pw,
+      })
+
+      return response.data.result.token;
+    }catch(error){
+      if(axios.isAxiosError(error)){ //타입 가드 필요(아니면 기본적으로 unknown으로 판단)
+        throw new Error(error.response?.data?.code);
+      }      
+    }
+  }
+  const handleLogin = async() => {
+    try{
+      const token = await requestLogin();
+      localStorage.setItem('user', token);
+      navigate('/mypage');
+    }catch(e){
+      if(e instanceof Error){
+        if(e.message === "01"){
+          alert(`로그인 실패 - 비밀번호가 다릅니다.`);
+        }
+      }
+    }
+  }
+
 
   return (
     <Flex>
       <LoginWrapper>
         <LoginTitle>로그인</LoginTitle>
         <LoginLayout>
-          <Input placeholder='아이디'/>
-          <Input placeholder='비밀번호'/>
-          <LoginButton>로그인</LoginButton>
+          <Input placeholder='아이디' value={id} onChange={(e)=>setId(e.target.value)}/>
+          <Input type='password' placeholder='비밀번호' value={pw} onChange={(e)=>setPw(e.target.value)}/>
+          <LoginButton onClick={handleLogin}>로그인</LoginButton>
           <SignUpText onClick={handleClickSignup}>회원가입</SignUpText>
         </LoginLayout>
       </LoginWrapper>
