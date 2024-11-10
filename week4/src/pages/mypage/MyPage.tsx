@@ -2,9 +2,15 @@ import React, { useState } from 'react'
 import MyHobby from '../../components/mypage/MyHobby';
 import MyInfo from '../../components/mypage/MyInfo';
 import styled from '@emotion/styled';
+import { useNavigate } from 'react-router-dom';
 
 const MyPage = () => {
   const [isHobby, setIsHobby] = useState(true);
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    localStorage.removeItem('user');
+    navigate("/");
+  }
   return (
     <Flex>
       <Header>
@@ -13,7 +19,7 @@ const MyPage = () => {
           <HeaderContent onClick={()=>setIsHobby(true)}>취미</HeaderContent>
           <HeaderContent onClick={()=>setIsHobby(false)}>내 정보</HeaderContent>
         </HeaderLeft>
-        <HeaderContent>로그아웃</HeaderContent>
+        <HeaderContent onClick={handleLogout}>로그아웃</HeaderContent>
       </Header>
       <LoginWrapper>
         <LoginTitle>{isHobby? "취미" : "내 정보 수정하기"}</LoginTitle>
